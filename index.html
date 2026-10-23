@@ -6,63 +6,19 @@
   <title>Amartya Ganguly | Intelligent Neuroprosthetics Laboratory, TUM</title>
   <meta name="description" content="Amartya Ganguly leads the Intelligent Neuroprosthetics Laboratory at TUM MIRMI, developing the biomechanical, sensory and neural control foundations of next-generation prosthetic hands.">
   <link rel="canonical" href="https://amartyaganguly.github.io/">
-  <style>
-    :root {
-      --paper: #F1F3F4;
-      --ink: #16233A;
-      --ink-soft: #4B5869;
-      --gutter: clamp(16px, 4vw, 56px);
-    }
-    @media (prefers-color-scheme: dark) {
-      :root { --paper: #0F1724; --ink: #E7EBEF; --ink-soft: #A2AEBD; }
-    }
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      background: var(--paper);
-      color: var(--ink);
-      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-      font-size: 1.125rem;
-      line-height: 1.55;
-    }
-    ::selection { background: #F3CB3A; color: #16233A; }
-
-    /* Frame 1: Introduction */
-    .hero {
-      container-type: inline-size;
-      padding: clamp(32px, 6vh, 64px) var(--gutter) clamp(48px, 9vh, 104px);
-    }
-    .roles {
-      list-style: none; margin: 0 0 1.75rem; padding: 0;
-      color: var(--ink-soft); font-size: 1rem; font-weight: 500; line-height: 1.5;
-    }
-    .name {
-      margin: 0 0 clamp(1.5rem, 3.5cqi, 2.75rem);
-      font-size: clamp(3.25rem, min(22cqi, 21vh), 12rem);
-      line-height: 0.96;
-      letter-spacing: -0.025em;
-    }
-    .name span { display: block; }
-    .given { font-style: italic; font-weight: 300; }
-    .family { font-weight: 800; }
-    .lede {
-      margin: 0; max-width: 34ch;
-      font-size: clamp(1.25rem, 1rem + 0.75vw, 1.75rem);
-      line-height: 1.42;
-    }
-    @media (min-width: 900px) {
-      .hero {
-        display: flex; flex-direction: column; justify-content: space-between;
-        min-height: 100vh; min-height: 100svh;
-        padding-top: 36px;
-      }
-      .roles { margin: 0 0 3rem; }
-    }
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <header class="site-header">
+    <nav class="tabs" aria-label="Pages">
+      <a href="./" aria-current="page">About</a>
+      <a href="projects.html">Projects</a>
+      <a href="publications.html">Publications</a>
+    </nav>
+  </header>
+
   <main>
-    <!-- Frame 1: Introduction -->
+    <!-- About: Frame 1 -->
     <section class="hero" aria-labelledby="name">
       <ul class="roles" role="list" aria-label="Roles">
         <li>Group Leader</li>
@@ -75,7 +31,7 @@
       </div>
     </section>
 
-    <!-- Frame 2 will go here -->
+    <!-- More About sections will go here -->
 
   </main>
 </body>
