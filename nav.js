@@ -8,7 +8,8 @@ var TABS = [
   ["Media", "media.html"],
   ["Social Entrepreneurship", "social-entrepreneurship.html"],
   ["Demos and Competitions", "demos-competitions.html"],
-  ["Open Positions and Consulting", "positions-consulting.html"]
+  ["Open Positions", "positions.html"],
+  ["Consulting", "consulting.html"]
 ];
 
 (function () {
