@@ -28,23 +28,27 @@ a:hover { text-decoration-thickness: 2px; }
 ::selection { background: var(--nerve); color: var(--on-nerve); }
 mark { background: var(--nerve); color: var(--on-nerve); padding: 0.05em 0.3em; }
 
-/* Top bar with the tabs */
+/* Top bar: nav.js fills it with the tabs */
 .site-header {
-  display: flex; flex-wrap: wrap; align-items: center; gap: 0.25rem 2rem;
+  display: flex; align-items: center; gap: 0.25rem 2rem;
   min-height: var(--header-h);
   padding: 12px var(--gutter);
 }
-.wordmark { font-weight: 700; text-decoration: none; }
-.tabs { display: flex; gap: 0 1.5rem; margin-left: auto; }
+.wordmark { flex: none; font-weight: 700; text-decoration: none; white-space: nowrap; }
+.tabs {
+  display: flex; gap: 0 1.5rem; margin-left: auto; min-width: 0;
+  overflow-x: auto; scrollbar-width: thin;
+}
 .tabs a {
-  padding: 0.5rem 0; border-bottom: 3px solid transparent;
-  font-size: 0.9375rem; font-weight: 600; text-decoration: none;
+  flex: none; padding: 0.5rem 0; border-bottom: 3px solid transparent;
+  font-size: 0.9375rem; font-weight: 600; text-decoration: none; white-space: nowrap;
 }
 .tabs a:hover { border-bottom-color: var(--rule); }
+.tabs a:focus-visible { outline-offset: -3px; }
 .tabs a[aria-current="page"] { border-bottom-color: currentColor; }
-@media (max-width: 600px) {
+@media (max-width: 1180px) {
   .site-header { flex-direction: column; align-items: flex-start; }
-  .tabs { margin-left: 0; gap: 0 1.25rem; }
+  .tabs { margin-left: 0; align-self: stretch; gap: 0 1.25rem; }
 }
 
 /* ---------- About page ---------- */
@@ -80,7 +84,7 @@ mark { background: var(--nerve); color: var(--on-nerve); padding: 0.05em 0.3em; 
   .roles { margin: 0 0 3rem; }
 }
 
-/* ---------- Projects and Publications pages ---------- */
+/* ---------- All other pages ---------- */
 .page { max-width: 1120px; padding: clamp(16px, 4vh, 48px) var(--gutter) 96px; }
 .page-title {
   margin: 0 0 1rem;
@@ -94,6 +98,7 @@ mark { background: var(--nerve); color: var(--on-nerve); padding: 0.05em 0.3em; 
   margin: 0; padding-bottom: 0.75rem; border-bottom: 2px solid var(--ink);
   font-size: 1.5rem; font-weight: 800; line-height: 1.2;
 }
+.group-intro { margin: 1rem 0 0; font-size: 1rem; color: var(--ink-soft); }
 
 /* One row per project or publication: dates on the left, details on the right */
 .entries { list-style: none; margin: 0; padding: 0; }
@@ -112,6 +117,7 @@ mark { background: var(--nerve); color: var(--on-nerve); padding: 0.05em 0.3em; 
 .entries .facts li { margin: 0.2rem 0; }
 .entries .note { margin-top: 0.4rem; font-size: 0.9375rem; color: var(--ink-soft); }
 .entries .links { margin-top: 0.6rem; font-size: 1rem; }
+.entries .links a + a { margin-left: 1.25rem; }
 @media (max-width: 600px) {
   .entries > li { display: block; }
   .entries .when { margin-bottom: 0.2rem; font-size: 0.9375rem; }
