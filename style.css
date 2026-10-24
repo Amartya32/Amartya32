@@ -46,7 +46,7 @@ mark { background: var(--nerve); color: var(--on-nerve); padding: 0.05em 0.3em; 
 .tabs a:hover { border-bottom-color: var(--rule); }
 .tabs a:focus-visible { outline-offset: -3px; }
 .tabs a[aria-current="page"] { border-bottom-color: currentColor; }
-@media (max-width: 1180px) {
+@media (max-width: 1360px) {
   .site-header { flex-direction: column; align-items: flex-start; }
   .tabs { margin-left: 0; align-self: stretch; gap: 0 1.25rem; }
 }
