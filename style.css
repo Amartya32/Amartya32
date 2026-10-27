@@ -68,6 +68,9 @@ mark { background: var(--nerve); color: var(--on-nerve); padding: 0.05em 0.3em; 
   .wordmark { order: 1; }
   .theme-toggle { order: 2; margin-left: auto; }
   .tabs { order: 3; flex-basis: 100%; margin-left: 0; gap: 0 1.25rem; }
+  /* On the About page there's no name, so the tabs and the button share one row */
+  .is-home .tabs { order: 1; flex: 1 1 0; }
+  .is-home .theme-toggle { align-self: flex-start; }
 }
 /* On phones the tabs sit in one row that you swipe sideways */
 @media (max-width: 600px) {
