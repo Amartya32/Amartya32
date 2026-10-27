@@ -1,5 +1,7 @@
 /* Shared styles for every page of the site */
+/* Light colours (the sun/moon button in the top bar switches to the dark ones below) */
 :root {
+  color-scheme: light;
   --paper: #F1F3F4;
   --ink: #16233A;
   --ink-soft: #4B5869;
@@ -9,8 +11,16 @@
   --gutter: clamp(16px, 4vw, 56px);
   --header-h: 72px;
 }
+/* Dark colours */
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --paper: #0F1724; --ink: #E7EBEF; --ink-soft: #A2AEBD; --rule: #2B3747;
+}
 @media (prefers-color-scheme: dark) {
-  :root { --paper: #0F1724; --ink: #E7EBEF; --ink-soft: #A2AEBD; --rule: #2B3747; }
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --paper: #0F1724; --ink: #E7EBEF; --ink-soft: #A2AEBD; --rule: #2B3747;
+  }
 }
 * { box-sizing: border-box; }
 html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
@@ -28,17 +38,14 @@ a:hover { text-decoration-thickness: 2px; }
 ::selection { background: var(--nerve); color: var(--on-nerve); }
 mark { background: var(--nerve); color: var(--on-nerve); padding: 0.05em 0.3em; }
 
-/* Top bar: nav.js fills it with the tabs */
+/* Top bar: nav.js fills it with your name, the tabs and the light/dark button */
 .site-header {
-  display: flex; align-items: center; gap: 0.25rem 2rem;
+  display: flex; flex-wrap: wrap; align-items: center; gap: 0.25rem 2rem;
   min-height: var(--header-h);
   padding: 12px var(--gutter);
 }
 .wordmark { flex: none; font-weight: 700; text-decoration: none; white-space: nowrap; }
-.tabs {
-  display: flex; gap: 0 1.5rem; margin-left: auto; min-width: 0;
-  overflow-x: auto; scrollbar-width: thin;
-}
+.tabs { display: flex; flex-wrap: wrap; gap: 0 1.5rem; margin-left: auto; min-width: 0; }
 .tabs a {
   flex: none; padding: 0.5rem 0; border-bottom: 3px solid transparent;
   font-size: 0.9375rem; font-weight: 600; text-decoration: none; white-space: nowrap;
@@ -46,9 +53,25 @@ mark { background: var(--nerve); color: var(--on-nerve); padding: 0.05em 0.3em; 
 .tabs a:hover { border-bottom-color: var(--rule); }
 .tabs a:focus-visible { outline-offset: -3px; }
 .tabs a[aria-current="page"] { border-bottom-color: currentColor; }
-@media (max-width: 1360px) {
-  .site-header { flex-direction: column; align-items: flex-start; }
-  .tabs { margin-left: 0; align-self: stretch; gap: 0 1.25rem; }
+.theme-toggle {
+  flex: none; display: inline-grid; place-items: center;
+  width: 2.25rem; height: 2.25rem; padding: 0;
+  border: 1px solid var(--rule); border-radius: 50%;
+  background: none; color: inherit; cursor: pointer;
+}
+.theme-toggle:hover { border-color: currentColor; }
+.theme-toggle svg {
+  width: 1.125rem; height: 1.125rem;
+  fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round;
+}
+@media (max-width: 1480px) {
+  .wordmark { order: 1; }
+  .theme-toggle { order: 2; margin-left: auto; }
+  .tabs { order: 3; flex-basis: 100%; margin-left: 0; gap: 0 1.25rem; }
+}
+/* On phones the tabs sit in one row that you swipe sideways */
+@media (max-width: 600px) {
+  .tabs { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: thin; }
 }
 
 /* ---------- About page ---------- */
