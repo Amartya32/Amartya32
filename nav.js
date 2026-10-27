@@ -13,17 +13,44 @@ var TABS = [
 ];
 
 (function () {
+  var root = document.documentElement;
+
+  // Light or dark: the visitor's own choice if they made one, otherwise their device setting
+  var saved = null;
+  try { saved = localStorage.getItem("theme"); } catch (e) {}
+  var deviceDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+  root.setAttribute("data-theme", saved === "light" || saved === "dark" ? saved : (deviceDark ? "dark" : "light"));
+
   var header = document.querySelector(".site-header");
   if (!header) return;
   var page = (location.pathname.split("/").pop() || "index").replace(/\.html$/, "");
-  var html = page === "index" ? "" : '<a class="wordmark" href="./">Amartya Ganguly</a>';
-  html += '<nav class="tabs" aria-label="Pages">';
+  var html = '<a class="wordmark" href="./">Amartya Ganguly</a><nav class="tabs" aria-label="Pages">';
   for (var i = 0; i < TABS.length; i++) {
     var name = TABS[i][1] === "./" ? "index" : TABS[i][1].replace(/\.html$/, "");
     html += '<a href="' + TABS[i][1] + '"' + (name === page ? ' aria-current="page"' : "") + ">" + TABS[i][0] + "</a>";
   }
-  header.innerHTML = html + "</nav>";
-  // On small screens the tabs scroll sideways; start with the current tab in view
+  header.innerHTML = html + '</nav><button type="button" class="theme-toggle"></button>';
+
+  // The sun/moon button
+  var MOON = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>';
+  var SUN = '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 1.5v2M12 20.5v2M4.6 4.6 6 6M18 18l1.4 1.4M1.5 12h2M20.5 12h2M4.6 19.4 6 18M18 6l1.4-1.4"/></svg>';
+  var button = header.querySelector(".theme-toggle");
+  function showButton() {
+    var dark = root.getAttribute("data-theme") === "dark";
+    var label = dark ? "Switch to light mode" : "Switch to dark mode";
+    button.innerHTML = dark ? SUN : MOON;
+    button.setAttribute("aria-label", label);
+    button.title = label;
+  }
+  showButton();
+  button.addEventListener("click", function () {
+    var next = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
+    root.setAttribute("data-theme", next);
+    try { localStorage.setItem("theme", next); } catch (e) {}
+    showButton();
+  });
+
+  // On phones the tabs scroll sideways; start with the current tab in view
   var nav = header.querySelector(".tabs");
   var current = nav.querySelector('[aria-current="page"]');
   if (current && nav.scrollWidth > nav.clientWidth) {
