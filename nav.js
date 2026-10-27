@@ -24,7 +24,10 @@ var TABS = [
   var header = document.querySelector(".site-header");
   if (!header) return;
   var page = (location.pathname.split("/").pop() || "index").replace(/\.html$/, "");
-  var html = '<a class="wordmark" href="./">Amartya Ganguly</a><nav class="tabs" aria-label="Pages">';
+  // Your name at the top left, on every page except About (where it sits under your photo)
+  var html = page === "index" ? "" : '<a class="wordmark" href="./">Amartya Ganguly</a>';
+  if (page === "index") header.classList.add("is-home");
+  html += '<nav class="tabs" aria-label="Pages">';
   for (var i = 0; i < TABS.length; i++) {
     var name = TABS[i][1] === "./" ? "index" : TABS[i][1].replace(/\.html$/, "");
     html += '<a href="' + TABS[i][1] + '"' + (name === page ? ' aria-current="page"' : "") + ">" + TABS[i][0] + "</a>";
