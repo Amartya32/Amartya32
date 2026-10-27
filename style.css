@@ -136,9 +136,9 @@ mark { background: var(--nerve); color: var(--on-nerve); padding: 0.05em 0.3em; 
 }
 .about-photo img {
   display: block; width: 100%; height: 100%;
-  object-fit: cover; object-position: 75% 50%;
-  /* These three numbers frame your face. Change them if you swap the photo. */
-  transform: scale(1.6); transform-origin: 50% 35%;
+  object-fit: cover; object-position: 0% 0%;
+  /* These numbers frame your face. Change them if you swap the photo. */
+  transform: scale(1.35); transform-origin: 0% 0%;
 }
 .about-name { margin: 1.25rem 0 0; font-size: 1.75rem; font-weight: 800; line-height: 1.15; }
 .about .roles { margin: 0.5rem 0 0; }
