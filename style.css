@@ -123,31 +123,49 @@ mark { background: var(--nerve); color: var(--on-nerve); padding: 0.05em 0.3em; 
   .entries .when { margin-bottom: 0.2rem; font-size: 0.9375rem; }
 }
 
-/* ---------- About page: photo, experience and education ---------- */
-.bio {
-  display: grid; gap: 2.5rem;
-  max-width: 1280px; padding: 0 var(--gutter) 96px;
+/* ---------- About page: photo on the left, text on the right ---------- */
+.about {
+  display: grid;
+  grid-template-columns: 104px minmax(0, 1fr);
+  grid-template-areas: "photo intro" "lists lists";
+  gap: 2rem 1.25rem;
+  max-width: 1200px;
+  padding: clamp(16px, 4vh, 48px) var(--gutter) 96px;
 }
-.bio-photo { margin: 0; max-width: 340px; }
-.bio-photo img {
+.about-photo { grid-area: photo; margin: 0; }
+.about-photo img {
   display: block; width: 100%; height: auto;
-  aspect-ratio: 4 / 5; object-fit: cover; object-position: 50% 25%;
+  aspect-ratio: 4 / 5; object-fit: cover;
+  object-position: 69% 50%; /* first number moves the crop left or right */
   background: var(--rule);
 }
-.bio-lists h2 {
+.about-intro { grid-area: intro; align-self: center; }
+.about-name {
+  margin: 0;
+  font-size: clamp(1.75rem, 1.3rem + 1.4vw, 2.5rem); font-weight: 800; line-height: 1.1; letter-spacing: -0.015em;
+}
+.about .roles { margin: 0.6rem 0 0; }
+.about-lede { margin: 0.9rem 0 0; }
+.about-lists { grid-area: lists; }
+.about-lists h2 {
   margin: 0; padding-bottom: 0.75rem; border-bottom: 2px solid var(--ink);
   font-size: 1.5rem; font-weight: 800; line-height: 1.2;
 }
-.bio-lists .lines + h2 { margin-top: 2.5rem; }
+.about-lists .lines + h2 { margin-top: 2.5rem; }
 .lines { list-style: none; margin: 0; padding: 0; font-size: 1rem; }
 .lines li {
   display: grid; grid-template-columns: 7.5rem minmax(0, 1fr); column-gap: 1.5rem;
   padding: 0.65rem 0; border-bottom: 1px solid var(--rule);
 }
 .lines .when { color: var(--ink-soft); font-weight: 700; font-variant-numeric: tabular-nums; white-space: nowrap; }
-@media (min-width: 900px) {
-  .bio { grid-template-columns: minmax(220px, 300px) minmax(0, 1fr); column-gap: clamp(2.5rem, 5vw, 5rem); align-items: start; }
-  .bio-photo { max-width: none; }
+@media (min-width: 700px) {
+  .about {
+    grid-template-columns: 200px minmax(0, 1fr);
+    grid-template-areas: "photo intro" "photo lists";
+    grid-template-rows: auto 1fr;
+    column-gap: clamp(2rem, 4vw, 4rem); row-gap: 2.5rem;
+  }
+  .about-photo, .about-intro { align-self: start; }
 }
 @media (max-width: 600px) {
   .lines li { display: block; }
