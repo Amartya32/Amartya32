@@ -122,3 +122,34 @@ mark { background: var(--nerve); color: var(--on-nerve); padding: 0.05em 0.3em; 
   .entries > li { display: block; }
   .entries .when { margin-bottom: 0.2rem; font-size: 0.9375rem; }
 }
+
+/* ---------- About page: photo, experience and education ---------- */
+.bio {
+  display: grid; gap: 2.5rem;
+  max-width: 1280px; padding: 0 var(--gutter) 96px;
+}
+.bio-photo { margin: 0; max-width: 340px; }
+.bio-photo img {
+  display: block; width: 100%; height: auto;
+  aspect-ratio: 4 / 5; object-fit: cover; object-position: 50% 25%;
+  background: var(--rule);
+}
+.bio-lists h2 {
+  margin: 0; padding-bottom: 0.75rem; border-bottom: 2px solid var(--ink);
+  font-size: 1.5rem; font-weight: 800; line-height: 1.2;
+}
+.bio-lists .lines + h2 { margin-top: 2.5rem; }
+.lines { list-style: none; margin: 0; padding: 0; font-size: 1rem; }
+.lines li {
+  display: grid; grid-template-columns: 7.5rem minmax(0, 1fr); column-gap: 1.5rem;
+  padding: 0.65rem 0; border-bottom: 1px solid var(--rule);
+}
+.lines .when { color: var(--ink-soft); font-weight: 700; font-variant-numeric: tabular-nums; white-space: nowrap; }
+@media (min-width: 900px) {
+  .bio { grid-template-columns: minmax(220px, 300px) minmax(0, 1fr); column-gap: clamp(2.5rem, 5vw, 5rem); align-items: start; }
+  .bio-photo { max-width: none; }
+}
+@media (max-width: 600px) {
+  .lines li { display: block; }
+  .lines .when { display: block; font-size: 0.9375rem; }
+}
