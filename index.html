@@ -13,22 +13,29 @@
   <script src="nav.js"></script>
 
   <main>
-    <!-- About: photo on the left, text on the right -->
+    <!-- About: photo and name on the left, biography on the right -->
     <section class="about" aria-labelledby="name">
-      <figure class="about-photo">
-        <img src="photo.jpg" alt="Amartya Ganguly" width="2250" height="1332" decoding="async">
-      </figure>
 
-      <div class="about-intro">
+      <div class="about-side">
+        <figure class="about-photo">
+          <img src="photo.jpg" alt="Amartya Ganguly" width="2250" height="1332" decoding="async">
+        </figure>
         <h1 class="about-name" id="name">Amartya Ganguly</h1>
         <ul class="roles" role="list" aria-label="Roles">
           <li>Incoming Associate Professor (Biomechanics), IIIT-H, India</li>
           <li>Co-Founder of EnHands e.V.</li>
         </ul>
-        <p class="about-lede">under construction.</p>
+        <ul class="about-links" role="list">
+          <li><a href="https://scholar.google.com/citations?user=TyaaiKMAAAAJ&amp;hl=en">Google Scholar</a></li>
+          <li><a href="https://orcid.org/0000-0003-4093-1101">ORCID</a></li>
+        </ul>
       </div>
 
-      <div class="about-lists">
+      <div class="about-main">
+        <h2>Biography</h2>
+        <p>Amartya Ganguly is an incoming Associate Professor of Biomechanics at IIIT-H, India, and a Group Leader and Senior Scientist at the Munich Institute of Robotics and Machine Intelligence (MIRMI), Technical University of Munich. In 2021 he founded the Intelligent Neuroprosthetics Laboratory at MIRMI, where his team develops the biomechanical, sensory and neural control foundations of next-generation upper-limb prostheses and medical devices.</p>
+        <p>Before joining TUM, he worked on real-time musculoskeletal models of the human hand as a postdoctoral researcher at Keele University, led research and development for the ATLAS 2030 paediatric exoskeleton at Marsi Bionics in Spain, and contributed to the AGILIS clinical trial on restoring hand grasp at the University of Heidelberg. He holds a PhD in Engineering from the University of Hull, and is a co-founder of EnHands e.V., a not-for-profit that brings affordable prosthetic hands to amputees in Nepal, Bangladesh and Pakistan.</p>
+
         <h2>Experience</h2>
         <ul class="lines" role="list">
           <li><span class="when">Incoming</span><span>Associate Professor (Biomechanics), IIIT-H, India</span></li>
@@ -38,12 +45,14 @@
           <li><span class="when">2017–2018</span><span>Innovation Associate (Head of R&amp;D), Marsi Bionics, Spain</span></li>
           <li><span class="when">2015–2017</span><span>Postdoctoral Research Associate, Keele University, UK</span></li>
         </ul>
+
         <h2>Education</h2>
         <ul class="lines" role="list">
           <li><span class="when">2010–2015</span><span>PhD in Engineering, University of Hull, UK</span></li>
           <li><span class="when">2005–2009</span><span>BTech in Biomedical Engineering, West Bengal University of Technology, India</span></li>
         </ul>
       </div>
+
     </section>
 
     <!-- More About sections will go here -->
