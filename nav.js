@@ -25,12 +25,11 @@ var TABS = [
   if (!header) return;
   var page = (location.pathname.split("/").pop() || "index").replace(/\.html$/, "");
   // Your name at the top left, on every page except About (where it sits under your photo)
-  var html = page === "index" ? "" : '<a class="wordmark" href="./">Amartya Ganguly</a>';
-  if (page === "index") header.classList.add("is-home");
-  html += '<nav class="tabs" aria-label="Pages">';
-  for (var i = 0; i < TABS.length; i++) {
-    var name = TABS[i][1] === "./" ? "index" : TABS[i][1].replace(/\.html$/, "");
-    html += '<a href="' + TABS[i][1] + '"' + (name === page ? ' aria-current="page"' : "") + ">" + TABS[i][0] + "</a>";
+    // No name in the top bar on any page: the tabs and the light/dark button share one row
+  header.classList.add("is-home");
+  var html = '<nav class="tabs" aria-label="Pages">';
+  var name = TABS[i][1] === "./" ? "index" : TABS[i][1].replace(/\.html$/, "");
+  html += '<a href="' + TABS[i][1] + '"' + (name === page ? ' aria-current="page"' : "") + ">" + TABS[i][0] + "</a>";
   }
   header.innerHTML = html + '</nav><button type="button" class="theme-toggle"></button>';
 
